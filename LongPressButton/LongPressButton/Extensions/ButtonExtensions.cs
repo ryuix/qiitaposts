@@ -38,8 +38,7 @@ namespace LongPressButton.Extensions
 
             return down
                 .Select(_ => Observable.Timer(time).TakeUntil(up))
-                .Switch()
-                .Repeat();
+                .Switch();
         }
 
         public static IObservable<long> LongPressWithProgressAsObservable(this ButtonBase button, TimeSpan time)
