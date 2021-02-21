@@ -41,16 +41,6 @@ namespace LongPressButton.Extensions
                 .Switch();
         }
 
-        public static IObservable<long> LongPressWithProgressAsObservable(this ButtonBase button, TimeSpan time)
-        {
-            var down = button.PreviewMouseDownAsObservable();
-            var up = button.PreviewMouseUpAsObservable();
-
-            return down
-                .Select(_ => Observable.Interval(time).TakeUntil(up))
-                .Switch();
-        }
-
         public static IObservable<double> ProgressAsObservable(this ButtonBase button, TimeSpan time)
         {
             var down = button.PreviewMouseDownAsObservable();
