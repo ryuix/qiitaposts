@@ -37,12 +37,22 @@ namespace LongPressButton
             this.Progress
                 .ProgressAsObservable(TimeSpan.FromMilliseconds(1))
                 .ObserveOn(SynchronizationContext.Current)
-                .Subscribe(x => this.ProgressBar.Value = x);
+                .Subscribe(x =>
+                {
+                    this.ProgressBar.Value = x;
+                    if (x.Equals(100d))
+                        this.TestMessage.Text += $"ProgressCompleted!:{DateTime.Now}\n";
+                });
 
             this.Resumable
                 .ResumableProgressAsObservable(TimeSpan.FromMilliseconds(1))
                 .ObserveOn(SynchronizationContext.Current)
-                .Subscribe(x => this.ProgressBar.Value = x);
+                .Subscribe(x =>
+                {
+                    this.ProgressBar.Value = x;
+                    if (x.Equals(100d))
+                        this.TestMessage.Text += $"ResumableProgressCompleted!:{DateTime.Now}\n";
+                });
 
         }
     }
