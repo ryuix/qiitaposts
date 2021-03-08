@@ -1,0 +1,31 @@
+﻿<Window
+    x:Class="AllowOnlyOneOpen.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:vm="clr-namespace:AllowOnlyOneOpen.ViewModels"
+    Title="MainWindow"
+    Width="400"
+    Height="440"
+    d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel,
+                                     IsDesignTimeCreatable=True}"
+    Foreground="{StaticResource MaterialDesignDarkForeground}"
+    Background="{StaticResource MaterialDesignDarkBackground}"
+    mc:Ignorable="d">
+    <StackPanel>
+        <Expander Header="A" IsExpanded="{Binding AIsExpanded.Value, Mode=TwoWay}">
+            <Rectangle Height="100" Fill="Cyan" />
+        </Expander>
+        <Expander Header="B" IsExpanded="{Binding BIsExpanded.Value, Mode=TwoWay}">
+            <Rectangle Height="100" Fill="Gray" />
+        </Expander>
+        <Expander Header="C" IsExpanded="{Binding CIsExpanded.Value, Mode=TwoWay}">
+            <Rectangle Height="100" Fill="LightGreen" />
+        </Expander>
+        <Expander Header="D" IsExpanded="{Binding DIsExpanded.Value, Mode=TwoWay}">
+            <Rectangle Height="100" Fill="Violet" />
+        </Expander>
+    </StackPanel>
+</Window>
